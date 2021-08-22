@@ -1,0 +1,27 @@
+test:
+  activations-config:
+    # file-name: releases/tests/activations/input-bert-large-cased-finetuned-squad.py
+    file-name: input-bert-large-cased-finetuned-squad.py
+  arch-config:
+    - releases/tests/config/grayskull_arch.yaml
+    -
+      trisc2-size: 21KB
+  comparison-config:
+    - releases/tests/config/grayskull_comparison.yaml
+    -
+      correctness:
+        atol: 1.5
+  compiler-config:
+    - releases/tests/config/grayskull_compiler.yaml
+    -
+      sage-enable-layernorm-fusion: true
+      sage-small-constants-l1: false
+  graph-config:
+    arguments:
+      par-strategy: Grid
+    # file-name: releases/models/pytorch/bert-large-cased-finetuned-squad.py
+    file-name: bert-large-cased-finetuned-squad.py
+  runtime-config:
+    - releases/tests/config/grayskull_runtime.yaml
+    -
+      num-packers: 4

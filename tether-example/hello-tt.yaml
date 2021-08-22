@@ -1,0 +1,18 @@
+test:
+  activations-config:
+    arguments:
+      input-shapes: &input-shapes [[1, 1]]
+    file-name: set_scalar_input.py
+  arch-config: releases/tests/config/grayskull_arch.yaml
+  comparison-config: releases/tests/config/grayskull_comparison.yaml
+  compiler-config: 
+    - releases/tests/config/grayskull_compiler.yaml
+    - 
+      num-fidelity-phases-default: 4      
+  graph-config:
+    file-name: hello-tt.py
+    onnx: false
+  runtime-config: 
+    - releases/tests/config/grayskull_runtime.yaml
+    -
+      l1-format: FP16

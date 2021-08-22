@@ -1,0 +1,33 @@
+test:
+  activations-config:
+    # file-name: releases/tests/activations/input-bert-large-cased-finetuned-squad.py
+    file-name: input-bert-large-cased-finetuned-squad.py
+  arch-config:
+    - releases/tests/config/grayskull_arch.yaml
+    -
+      dram-read-stream-l1-buffer-size: 40KB
+      dram-size-per-core: 1MB
+      dram-write-stream-l1-buffer-size: 40KB
+      grid-size: 12x3
+      pq-size: 140KB
+      src-buffer-size-total: 139520
+      src-header-buffer-size-total: 12288
+  comparison-config:
+    - releases/tests/config/grayskull_comparison.yaml
+    -
+      correctness:
+        atol: 1.5
+  compiler-config:
+    - releases/tests/config/grayskull_compiler.yaml
+    -
+      sage-enable-layernorm-fusion: true
+      sage-small-constants-l1: false
+  graph-config:
+    arguments:
+      par-strategy: Grid
+    # file-name: releases/models/pytorch/bert-large-cased-finetuned-squad.py
+    file-name: bert-large-cased-finetuned-squad.py
+  runtime-config:
+    - releases/tests/config/grayskull_runtime.yaml
+    -
+      num-packers: 4

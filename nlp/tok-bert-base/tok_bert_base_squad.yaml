@@ -1,0 +1,23 @@
+test:
+  activations-config:
+    file-name: input_tok_squad_bert.py
+  arch-config:
+    - releases/tests/config/grayskull_arch.yaml
+    -
+      trisc2-size: 21KB
+  comparison-config:
+    - releases/tests/config/grayskull_comparison.yaml
+    -
+      correctness:
+        atol: 1.5
+  compiler-config:
+    - releases/tests/config/grayskull_compiler.yaml
+    -
+      sage-enable-layernorm-fusion: true
+      sage-small-constants-l1: false
+  graph-config:
+    file-name: tok_bert_base_squad.py
+  runtime-config:
+    - releases/tests/config/grayskull_runtime.yaml
+    -
+      num-packers: 4
