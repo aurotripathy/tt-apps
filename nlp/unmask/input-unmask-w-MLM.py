@@ -7,8 +7,14 @@ import torch
 dataset_iter = None
 model_name = "bert-base-cased"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
-sequence = f"Distilled models are much smaller than the models they mimic. Using them instead of the large versions would help {tokenizer.mask_token} our carbon footprint in a very big way."
+# sequence = f"Distilled models are much smaller than the models they mimic. Using them instead of the large versions would help {tokenizer.mask_token} our carbon footprint in a very big way."
+# sequence = f"My dog is {tokenizer.mask_token}."
 
+# sequence = f"When a musical piece is too simple, we tend not to like it, finding is too {tokenizer.mask_token}."
+# correct trivial
+
+sequence = f"You have a established schema for what a work of {tokenizer.mask_token} should be, and then something alien arrives and throws that schema into doubt."
+# correct art
 
 def cleanup():
     # Release the memory
